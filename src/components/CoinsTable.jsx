@@ -22,7 +22,7 @@ import { useHistory } from "react-router-dom";
 import { Pagination } from "@material-ui/lab";
 
 export function numberWithCommas(x) {
-  return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  return x?.toString()?.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 }
 
 
@@ -42,8 +42,6 @@ const CoinsTable = () => {
     setCoins(data);
     setLoading(false);
   };
-
-  console.log(coins);
 
   useEffect(() => {
     fetchCoins();
@@ -134,7 +132,7 @@ const CoinsTable = () => {
 
                     return (
                       <TableRow
-                        onClick={() => history.pushState(`/coins/${row.id}`)}
+                        onClick={() => history.push(`/coins/${row.id}`)}
                         className={Classnames.row}
                         key={row.name}
                       >
